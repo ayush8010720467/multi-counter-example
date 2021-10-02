@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button";
 import './counter.css'
 function Counter(props){
-    // var value=0;
     const [value,updateValue] = useState(props.children);
+    // useEffect(()=>{return ()=>updateValue(props.children);},[props.children]);
     const incr = ()=>{
         updateValue(value+1);
     }
@@ -13,6 +13,7 @@ function Counter(props){
     const reset = ()=>{
         updateValue(0)
     }
+    props.getResetFunc(reset);
     return (<>
     <div className='counter-card'>
     <div>
